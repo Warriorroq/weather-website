@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0C0C0C;
+    background-image: url(/images/bg.svg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+    font-family: "Montserrat", sans-serif;
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+}
+
+.container {
+    margin: 0 200px;
+}
+
+.main-part {
+    margin-top: 40px;
+    background-color: #ffffff36;
+    padding: 15px 15px 35px 15px;
+    border-radius: 5px;
+    transition: background-color 1s ease-in-out;
+    backdrop-filter: blur(3px);
+    transition: backdrop-filter 0.3s ease-in-out;
+}
+
+nav {
+    display: flex;
+    list-style: none;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 50px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 14px;
+}
+
+.block {
+    display: flex;
+    margin-top: 100px;
+}
+
+.search-btn {
+    background-color: black;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 0px 10px 10px 0px;
+    height: 50px;
+}
+
+.location-btn {
+    background-color: black;
+    border: none;
+    padding: 13px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-left: 10px;
+    height: 50px;
+}
+
+input {
+    height: 30px;
+    width: 392px;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+    outline: none;
+    border-radius: 10px 0px 0px 10px;
+}
+
+.time-block {
+    border: 1px #A3A3A3;
+    background-color: white;
+    padding: 0px 15px 0px 15px;
+    border-radius: 10px;
+    margin-left: 10px;
+    width: 190px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Main part block */
+
+.city-info-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+h3 {
+    font-weight: 500;
+}
+
+h5 {
+    font-weight: 400;
+}
+
+.temperature-info-row {
+    display: flex;
+    align-items: center;
+    font-size: 48px;
+}
+
+p {
+    font-size: 16px;
+}
+
+.temp-full-info {
+    border-bottom: 1px solid #A3A3A3;
+    display: flex;
+    width: 98%;
+    justify-content: space-between;
+}
+
+.big-block {
+    margin-top: 36px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+}
+
+.cloud-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cloud-row button {
+    border: none;
+    background-color: #ffff;
+    border-radius: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.right-column{
+    width: 100%;
+}
+.left-column{
+    width: 100%;
+}
+
+
+/* Responsive part */
+@media only screen and (max-width: 1200px){
+    .time-block {
+        width: 205px;
+    }
+    .container{
+        margin: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .temp-full-info {
+        width: 320px;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    .temp-full-info {
+        width: 320px;
+    }
+    .big-block {
+        margin-top: 36px;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+    }
+    .left-column .right-column{
+        width: 100%;
+    }
+    .temp-full-info{
+        width: 100%;
+    }
+    .time-block {
+        width: 240px;
+    }
+    .left-column{
+        width: 100%;
+    }
+    .right-column{
+        width: 100%;
+    }
+    .time-block p{
+        font-size: 12px;
+    }
+    .time-block{
+        padding: 5px 15px 0px 15px;;
+    }
+}
+
+
+@media only screen and (max-width: 640px){
+    .time-block{
+    display: none;
+    }
+}
+
+@media only screen and (min-width: 1800px){
+    .city-info-row{
+        font-size: 30px;
+    }
+    nav{
+        font-size: 24px;
+    }
+    input{
+        height: 60px;
+    width: 75%;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+    outline: none;
+    font-size: 20px;
+    border-radius: 10px 0px 0px 10px;
+    }
+    .search-btn{
+        height: 80px;
+        padding: 26px;
+    }
+    .search-btn img{
+        width: 30px;
+    }
+    .location-btn{
+        background-color: black;
+        border: none;
+        padding: 25px;
+        cursor: pointer;
+        border-radius: 10px;
+        margin-left: 10px;
+        height: 80px;
+    }
+    .location-btn img{
+        width: 30px;
+    }
+    .time-block {
+        width: 250px;
+        
+    }
+    .time-block p {
+        font-size: 19px;
+        padding: 10px 0px 0px 0px;
+    }
+    .temp-full-info p{
+        font-size: 20px;
+    }
+    #feels-like{
+        font-size: 20px;
+    }
+    .main-part h5{
+        font-size: 20px;
+    }
+}
+
+#logo{
+    display: none;
+}
