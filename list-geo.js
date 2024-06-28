@@ -1,3 +1,5 @@
+const APIkey = "e4c7d413beed7d8cc6521ae67ca4d8f0";
+
 document.addEventListener('DOMContentLoaded', () => {
     const defaultLocations = ['Berlin', 'Washington', 'Pekin', 'Kiev'];
     const locationSelect = document.getElementById('location-select');
@@ -15,7 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function fetchWeather(location) {
-        // Replace with a real API call
+        const response = await fetch(`http://api.openweathermap.org/data/2.5/find?q=${location}&appid=${APIkey}&units=metric`);
+
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log(data);
         const weatherData = {
             location: location,
             temperature: '20°C',
