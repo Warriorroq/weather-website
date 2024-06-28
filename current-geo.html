@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather Site</title>
+    <title>Current Location Weather</title>
     <link rel="stylesheet" href="style.css">
+    <script src="current-geo.js" defer></script>
 </head>
 <body>
     <header>
-        <h1>Weather Information</h1>
+        <h1>Current Location Weather</h1>
     </header>
     <nav>
         <a href="index.html">Home</a>
@@ -16,8 +17,9 @@
         <a href="list-geo.html">Select Location</a>
     </nav>
     <div class="container">
-        <h1>Welcome to the Weather Information Site</h1>
-        <p>Use the menu above to navigate through the site.</p>
+        <div id="weather-info" class="weather-info">
+            <p>Loading weather information...</p>
+        </div>
     </div>
 </body>
 </html>
