@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Site</title>
-    <link rel = "stylesheet" href="style/home-page/style-main.css">
+    <link rel="stylesheet" href="style/home-page/style-main.css">
 </head>
 <body>
     <div class="weather-container">
@@ -21,16 +21,16 @@
             <p id="visibility"></p>
             <p id="feelsLike"></p>
         </div>
+        <div class="forecast" id="hourlyForecast" style="display: none;">
+            <h2>Day Forecast</h2>
+            <div id="hourlyForecastContainer"></div>
+        </div>
         <div class="forecast" id="forecast" style="display: none;">
             <h2>5-Day Forecast</h2>
             <div id="forecastContainer"></div>
         </div>
-        <div class="forecast" id="hourlyForecast" style="display: none;">
-            <h2>Hourly Forecast for Next Day</h2>
-            <div id="hourlyForecastContainer"></div>
-        </div>
     </div>
 
-    <script src = "scripts/home-page/main.js"></script>
+    <script src="scripts/home-page/main.js"></script>
 </body>
 </html>

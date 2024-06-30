@@ -63,11 +63,10 @@ async function getWeatherByCoords(lat, lon) {
         }
 
         const nextDay = new Date();
-        nextDay.setDate(nextDay.getDate() + 1);
+        nextDay.setDate(nextDay.getDate()); // day
         const nextDayString = nextDay.toISOString().split('T')[0];
 
         const hourlyForecast = forecastData.list.filter(item => item.dt_txt.startsWith(nextDayString));
-
         if (hourlyForecast.length > 0) {
             document.getElementById('hourlyForecast').style.display = 'block';
             const hourlyForecastContainer = document.getElementById('hourlyForecastContainer');
