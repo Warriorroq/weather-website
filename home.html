@@ -9,18 +9,22 @@
 <body>
     <div class="weather-container">
         <h1>Weather in Your City</h1>
-        <input type="text" id="cityInput" placeholder="Enter city name">
-        <button onclick="getWeather()">Get Weather</button>
-        
-        <div>
-            <label for="unitSelect">Choose unit: </label>
-            <select id="unitSelect" onchange="getWeather()">
-                <option value="metric">Celsius</option>
-                <option value="imperial">Fahrenheit</option>
-            </select>
+        <div class="search_container">
+            <input class="city_input" type="text" id="cityInput" placeholder="Enter city name">
+            <button class="city_submit_input" onclick="getWeather()">Get Weather</button>
+
+            <div class="switch_container non-selectable">
+                <label class="switch">
+                    <input id="unitSelect" type="checkbox" onchange="getWeather()">
+                    <span class="slider"></span>
+                    <p id="p__celsius">Celsius</p>
+                    <p id="p__farhenheit">Fahrenheit</p>
+                </label>
+            </div>
         </div>
 
-        <div id="weatherResult" style="display: none;">
+        <div class="weather_result_container" id="weatherResult" style="display: none;">
+            <h2 id="cityName"></h2>
             <img id="weatherIcon" class="weather-icon" src="" alt="Weather Icon">
             <p class="temp" id="temperature"></p>
             <p id="weatherDescription"></p>
@@ -30,11 +34,11 @@
             <p id="visibility"></p>
             <p id="feelsLike"></p>
         </div>
-        <div class="forecast" id="hourlyForecast" style="display: none;">
+        <div class="forecast non-selectable" id="hourlyForecast" style="display: none;">
             <h2>Day Forecast</h2>
             <div id="hourlyForecastContainer" class="horizontal-forecast"></div>
         </div>
-        <div class="forecast" id="forecast" style="display: none;">
+        <div class="forecast non-selectable" id="forecast" style="display: none;">
             <h2>5-Day Forecast</h2>
             <div id="forecastContainer" class="horizontal-forecast"></div>
         </div>
