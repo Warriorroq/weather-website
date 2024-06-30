@@ -1,4 +1,3 @@
-//import { getWeatherByCurrentLocation, getWeatherByCoords, getWeatherByCity } from 'scripts/get-weather.js';
 const apiKey = 'e4c7d413beed7d8cc6521ae67ca4d8f0';
 
 function getLocation() {
@@ -15,9 +14,15 @@ function getLocation() {
     }
 }
 
+function getSelectedUnit() {
+    const unitSelect = document.getElementById('unitSelect');
+    return unitSelect.value;
+}
+
 async function getWeatherByCoords(lat, lon) {
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+    const unit = getSelectedUnit();
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${unit}`;
 
     try {
         const weatherResponse = await fetch(weatherUrl);
@@ -28,13 +33,13 @@ async function getWeatherByCoords(lat, lon) {
 
         document.getElementById('weatherResult').style.display = 'block';
         document.getElementById('weatherIcon').src = `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
-        document.getElementById('temperature').innerText = `${weatherData.main.temp}°C`;
+        document.getElementById('temperature').innerText = `${weatherData.main.temp}°${unit === 'metric' ? 'C' : 'F'}`;
         document.getElementById('weatherDescription').innerText = weatherData.weather[0].description;
         document.getElementById('humidity').innerText = `Humidity: ${weatherData.main.humidity}%`;
-        document.getElementById('windSpeed').innerText = `Wind Speed: ${weatherData.wind.speed} m/s`;
+        document.getElementById('windSpeed').innerText = `Wind Speed: ${weatherData.wind.speed} ${unit === 'metric' ? 'm/s' : 'mph'}`;
         document.getElementById('pressure').innerText = `Pressure: ${weatherData.main.pressure} hPa`;
         document.getElementById('visibility').innerText = `Visibility: ${weatherData.visibility / 1000} km`;
-        document.getElementById('feelsLike').innerText = `Feels Like: ${weatherData.main.feels_like}°C`;
+        document.getElementById('feelsLike').innerText = `Feels Like: ${weatherData.main.feels_like}°${unit === 'metric' ? 'C' : 'F'}`;
 
         const forecastResponse = await fetch(forecastUrl);
         const forecastData = await forecastResponse.json();
@@ -52,10 +57,10 @@ async function getWeatherByCoords(lat, lon) {
                 <div class="forecast-day">
                     <span>${date}</span>
                     <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
-                    <span>${temp}°C</span>
-                    <span>Feels Like: ${forecastItem.main.feels_like}°C</span>
+                    <span>${temp}°${unit === 'metric' ? 'C' : 'F'}</span>
+                    <span>Feels Like: ${forecastItem.main.feels_like}°${unit === 'metric' ? 'C' : 'F'}</span>
                     <span>Humidity: ${forecastItem.main.humidity}%</span>
-                    <span>Wind: ${forecastItem.wind.speed} m/s</span>
+                    <span>Wind: ${forecastItem.wind.speed} ${unit === 'metric' ? 'm/s' : 'mph'}</span>
                     <span>Pressure: ${forecastItem.main.pressure} hPa</span>
                     <span>Visibility: ${forecastItem.visibility / 1000} km</span>
                 </div>
@@ -63,7 +68,7 @@ async function getWeatherByCoords(lat, lon) {
         }
 
         const nextDay = new Date();
-        nextDay.setDate(nextDay.getDate()); // day
+        nextDay.setDate(nextDay.getDate() + 1);
         const nextDayString = nextDay.toISOString().split('T')[0];
 
         const hourlyForecast = forecastData.list.filter(item => item.dt_txt.startsWith(nextDayString));
@@ -80,10 +85,10 @@ async function getWeatherByCoords(lat, lon) {
                     <div class="forecast-hour">
                         <span>${time}</span>
                         <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
-                        <span>${temp}°C</span>
-                        <span>Feels Like: ${forecastItem.main.feels_like}°C</span>
+                        <span>${temp}°${unit === 'metric' ? 'C' : 'F'}</span>
+                        <span>Feels Like: ${forecastItem.main.feels_like}°${unit === 'metric' ? 'C' : 'F'}</span>
                         <span>Humidity: ${forecastItem.main.humidity}%</span>
-                        <span>Wind: ${forecastItem.wind.speed} m/s</span>
+                        <span>Wind: ${forecastItem.wind.speed} ${unit === 'metric' ? 'm/s' : 'mph'}</span>
                         <span>Pressure: ${forecastItem.main.pressure} hPa</span>
                         <span>Visibility: ${forecastItem.visibility / 1000} km</span>
                     </div>
@@ -101,8 +106,9 @@ async function getWeather() {
     if (!city)
         return;
     
-    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+    const unit = getSelectedUnit();
+    const weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${unit}`;
 
     try {
         const weatherResponse = await fetch(weatherUrl);
@@ -113,13 +119,13 @@ async function getWeather() {
 
         document.getElementById('weatherResult').style.display = 'block';
         document.getElementById('weatherIcon').src = `http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`;
-        document.getElementById('temperature').innerText = `${weatherData.main.temp}°C`;
+        document.getElementById('temperature').innerText = `${weatherData.main.temp}°${unit === 'metric' ? 'C' : 'F'}`;
         document.getElementById('weatherDescription').innerText = weatherData.weather[0].description;
         document.getElementById('humidity').innerText = `Humidity: ${weatherData.main.humidity}%`;
-        document.getElementById('windSpeed').innerText = `Wind Speed: ${weatherData.wind.speed} m/s`;
+        document.getElementById('windSpeed').innerText = `Wind Speed: ${weatherData.wind.speed} ${unit === 'metric' ? 'm/s' : 'mph'}`;
         document.getElementById('pressure').innerText = `Pressure: ${weatherData.main.pressure} hPa`;
         document.getElementById('visibility').innerText = `Visibility: ${weatherData.visibility / 1000} km`;
-        document.getElementById('feelsLike').innerText = `Feels Like: ${weatherData.main.feels_like}°C`;
+        document.getElementById('feelsLike').innerText = `Feels Like: ${weatherData.main.feels_like}°${unit === 'metric' ? 'C' : 'F'}`;
 
         const forecastResponse = await fetch(forecastUrl);
         const forecastData = await forecastResponse.json();
@@ -137,10 +143,10 @@ async function getWeather() {
                 <div class="forecast-day">
                     <span>${date}</span>
                     <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
-                    <span>${temp}°C</span>
-                    <span>Feels Like: ${forecastItem.main.feels_like}°C</span>
+                    <span>${temp}°${unit === 'metric' ? 'C' : 'F'}</span>
+                    <span>Feels Like: ${forecastItem.main.feels_like}°${unit === 'metric' ? 'C' : 'F'}</span>
                     <span>Humidity: ${forecastItem.main.humidity}%</span>
-                    <span>Wind: ${forecastItem.wind.speed} m/s</span>
+                    <span>Wind: ${forecastItem.wind.speed} ${unit === 'metric' ? 'm/s' : 'mph'}</span>
                     <span>Pressure: ${forecastItem.main.pressure} hPa</span>
                     <span>Visibility: ${forecastItem.visibility / 1000} km</span>
                 </div>
@@ -166,10 +172,10 @@ async function getWeather() {
                     <div class="forecast-hour">
                         <span>${time}</span>
                         <img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon">
-                        <span>${temp}°C</span>
-                        <span>Feels Like: ${forecastItem.main.feels_like}°C</span>
+                        <span>${temp}°${unit === 'metric' ? 'C' : 'F'}</span>
+                        <span>Feels Like: ${forecastItem.main.feels_like}°${unit === 'metric' ? 'C' : 'F'}</span>
                         <span>Humidity: ${forecastItem.main.humidity}%</span>
-                        <span>Wind: ${forecastItem.wind.speed} m/s</span>
+                        <span>Wind: ${forecastItem.wind.speed} ${unit === 'metric' ? 'm/s' : 'mph'}</span>
                         <span>Pressure: ${forecastItem.main.pressure} hPa</span>
                         <span>Visibility: ${forecastItem.visibility / 1000} km</span>
                     </div>
