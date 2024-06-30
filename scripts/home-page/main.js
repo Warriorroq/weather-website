@@ -6,9 +6,7 @@ function getLocation() {
             const lat = position.coords.latitude;
             const lon = position.coords.longitude;
             getWeatherByCoords(lat, lon);
-        }, () => {
-            alert('Unable to retrieve your location. Please enter a city name.');
-        });
+        }, () => {});
     } else {
         alert('Geolocation is not supported by this browser. Please enter a city name.');
     }
