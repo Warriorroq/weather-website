@@ -47,6 +47,14 @@ body {
     display: flex;
     overflow-x: auto;
     gap: 10px;
+    padding: 10px;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+}
+
+.horizontal-forecast::-webkit-scrollbar {
+    width: 0;
+    height: 0; /* Safari and Chrome */
 }
 
 .forecast-day, .forecast-hour {
@@ -61,6 +69,11 @@ body {
     justify-content: center; /* Centering content vertically */
     align-items: center; /* Centering content horizontally */
     text-align: center; /* Centering text */
+    cursor: grab; /* Add cursor style for draggable elements */
+}
+
+.forecast-day:active, .forecast-hour:active {
+    cursor: grabbing; /* Change cursor when active */
 }
 
 .forecast-day img, .forecast-hour img {
