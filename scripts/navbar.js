@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             window.addEventListener('scroll', function() {
                 let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                console.log(scrollTop);
                 if (scrollTop === 0) {
                     navbar.classList.remove('navbar-hidden');
                 } else if (scrollTop > lastScrollTop) {
