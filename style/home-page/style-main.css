@@ -130,9 +130,14 @@ body {
     font-size: 16px;
     cursor: pointer;
     min-width: fit-content;
+
 }
 
-
+/*Darker animate*/
+.city_submit_input:hover {
+    background: #a3e62b;
+    transition: 0.3s;
+}
 
 /*------------------------*/
 
