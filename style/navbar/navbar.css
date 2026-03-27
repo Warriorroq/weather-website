@@ -9,6 +9,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 60px;
+    padding: 0 20px;
+    box-sizing: border-box;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     position: fixed;
@@ -29,6 +31,33 @@ body {
     transition: color 0.3s ease;
 }
 
-.navbar a:hover {
+.navbar a.navbar-brand {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    position: absolute;
+    left: 20px;
+    margin: 0;
+    background-image: linear-gradient(90deg, #ffd166 0%, #ff7b7b 30%, #7dd3fc 65%, #a78bfa 100%);
+    background-size: 180% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.55),
+        0 0 18px rgba(125, 211, 252, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.22);
+    transition: transform 0.25s ease, background-position 0.25s ease, text-shadow 0.25s ease;
+}
+
+.navbar a.navbar-brand:hover {
+    transform: translateY(-1px) scale(1.04);
+    background-position: 100% 50%;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.7),
+        0 0 24px rgba(125, 211, 252, 0.55),
+        0 0 32px rgba(167, 139, 250, 0.45);
+}
+
+.navbar a:not(.navbar-brand):hover {
     color: #1e90ff;
 }
