@@ -6,13 +6,42 @@ body {
     overflow-y: hidden;
 }
 
+h2.site-name {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    letter-spacing: 1px;
+    font-size: calc(16px + 1.7vw);
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.28);
+    z-index: 3;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+body:has(.lower-connector:hover) h2.site-name {
+    background-image: linear-gradient(90deg, #ffd166 0%, #ff7b7b 30%, #7dd3fc 65%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow:
+        0 0 8px rgba(255, 255, 255, 0.55),
+        0 0 18px rgba(125, 211, 252, 0.45),
+        0 2px 8px rgba(0, 0, 0, 0.25);
+    transform: translateX(-50%) scale(1.03);
+}
+
 img.day-time-image {
     position: absolute;
-    top: 5%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     width: 35vh;
     height: auto;
+    z-index: 2;
 }
 
 div.lower-connector{
@@ -27,6 +56,7 @@ div.lower-connector{
     left: 50%;
     transform: translateX(-50%);
     transition: all 0.3s ease;
+    z-index: 1;
 }
 
 div.lower-connector:hover{
@@ -35,7 +65,7 @@ div.lower-connector:hover{
 }
 
 div.lower-connector h1 {
-    padding-top: calc(1% + 5vw);
+    padding-top: calc(3% + 4vw);
     font-size: calc(1% + 3vh);
 }
 

@@ -10,10 +10,11 @@
 <body>
     <div class="weather-container">
         <h1>Weather in Your City</h1>
-        <div class="search_container">
-            <input class="city_input" type="text" id="cityInput" placeholder="Enter city name">
-            <button class="city_submit_input" onclick="getWeather()">Get Weather</button>
-
+        <div class="weather_buttons_container">
+            <div class="search_container">
+                <input class="city_input" type="text" id="cityInput" placeholder="Enter city name">
+                <button class="city_submit_input" onclick="getWeather()">Find</button>
+            </div>
             <div class="switch_container non-selectable">
                 <label class="switch">
                     <input id="unitSelect" type="checkbox" onchange="getWeather()">
@@ -36,7 +37,7 @@
             <p id="feelsLike"></p>
         </div>
         <div class="forecast non-selectable" id="hourlyForecast" style="display: none;">
-            <h2>Day Forecast</h2>
+            <h2>Daily Forecast</h2>
             <div id="hourlyForecastContainer" class="horizontal-forecast"></div>
         </div>
         <div class="forecast non-selectable" id="forecast" style="display: none;">
